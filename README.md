@@ -129,6 +129,10 @@ The RAG pipeline contains four main stages:
         2) LayoutLMv3
 
      6.3 Using Heirarchial Chunking on basis of section and their heading which appears on evry page and nearly 40-50 pages have same headings.
-      
+
+
+  ## **3) Results **
+       1) Outputs of the model are shown on colab file by taking different prompts
+      2) model was giving correct results except torque specs for tables which are in html doc format
        
 
