@@ -12,33 +12,33 @@ The goal was to build a text-based RAG pipeline capable of:
 
   5) Returning clean structured JSON output
 
-  6)This README explains the system design, tools used, and ideas for improvement.
+  6) This README explains the system design, tools used, and ideas for improvement.
 
 ## **1) Project Overview**
 
 Automotive service manuals contain:
 
-   1)Long procedural instructions
+   1) Long procedural instructions
 
-   2)Tables with torque specs
+   2) Tables with torque specs
 
-   3)Part number lists
+   3) Part number lists
 
-I  4)Images with overlaid labels
+I  4) Images with overlaid labels
 
-   5)Some pages without selectable text
+   5) Some pages without selectable text
 
 Thus, many specifications—especially Torque Specifications—are difficult to extract directly using plain PDF text extraction.
 
 To solve this, a hybrid pipeline was implemented using:
 
-   1)PyMuPDF for PDF parsing
+   1) PyMuPDF for PDF parsing
 
-   2)Sentence Transformers for embeddings
+   2) Sentence Transformers for embeddings
     
-   3)FAISS for similarity search
+   3) FAISS for similarity search
 
-   4)Gemini text model for specification extraction
+   4) Gemini text model for specification extraction
    
   
 
@@ -50,7 +50,7 @@ To solve this, a hybrid pipeline was implemented using:
 
 The RAG pipeline contains four main stages:
 
-  ** 2.1 PDF Text Extraction **
+  2.1 PDF Text Extraction 
 
         1)Using PyMuPDF (fitz)
 
@@ -63,7 +63,7 @@ The RAG pipeline contains four main stages:
               c)Inconsistent font rendering
               c)Multi-column layouts
 
-      ** 2.2 Text Chunking **
+  2.2 Text Chunking 
 
       1) Manual text is split into Maximum ~200–250 words per chunk
 
@@ -71,19 +71,17 @@ The RAG pipeline contains four main stages:
 
       3)This improves contextual retrieval during querying
 
-     ** 2.3 Embeddings & Vector Store **
+   2.3 Embeddings & Vector Store
 
-    Using:
-
-   1) SentenceTransformer: all-MiniLM-L6-v2
+    1) SentenceTransformer: all-MiniLM-L6-v2
 
     2) FAISS IndexFlatIP for similarity search
 
 Embeddings allow retrieval even when the query wording differs from the manual text. 
 
- ** 2.4 Retrieval-Augmented LLM Query **
+2.4 Retrieval-Augmented LLM Query
 
-  The RAG query flow:
+   The RAG query flow:
 
    1) User → “Torque for brake caliper bolts”
 
@@ -106,10 +104,10 @@ Embeddings allow retrieval even when the query wording differs from the manual t
 
    
 ## **2) Future Improvements**
- ** 6.1 Integrate Gemini Vision (Important Upgrade) **
+  6.1 Integrate Gemini Vision (Important Upgrade) 
 
     Many torque tables exist ONLY as images.
-       Gemini Vision can:
+    Gemini Vision can:
 
       1)Detect tables visually
 
@@ -122,13 +120,13 @@ Embeddings allow retrieval even when the query wording differs from the manual t
       5)This would completely solve the problem of thin-line tables.
 
 
-    ** 6.2 Use Deep Table Extractors **
+     6.2 Use Deep Table Extractors 
 
        Examples:
         1)Google DocAI
         2)LayoutLMv3
 
-    ** 6.3 Using Heirarchial Chunking **
+     6.3 Using Heirarchial Chunking on basis of section and their heading which appears on evry page and nearly 40-50 pages have same headings.
       
        
 
