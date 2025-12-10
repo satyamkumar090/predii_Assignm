@@ -2,14 +2,14 @@ This project implements a Retrieval-Augmented Generation (RAG) system designed t
 
 The goal was to build a text-based RAG pipeline capable of:
 
-Extracting text from a large PDF
+  1) Extracting text from a large PDF
 
-Chunking & embedding content
+  2) Chunking & embedding content
 
-Performing vector retrieval
+  3) Performing vector retrieval
 
-Using an LLM to answer specification queries
+  4) Using an LLM to answer specification queries
 
-Returning clean structured JSON output
+  5) Returning clean structured JSON output
 
-This README explains the system design, tools used, and ideas for improvement.
+  6)This README explains the system design, tools used, and ideas for improvement.
