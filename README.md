@@ -52,36 +52,36 @@ The RAG pipeline contains four main stages:
 
   2.1 PDF Text Extraction 
 
-        1)Using PyMuPDF (fitz)
+        1) Using PyMuPDF (fitz)
 
-        2)Each page is read and converted to raw text
+        2) Each page is read and converted to raw text
 
-        3)Some pages contain only partial text because torque tables are actually embedded images
+        3) Some pages contain only partial text because torque tables are actually embedded images
 
-        4)A fallback OCR method using pytesseract was attempted but accuracy was low due to:
+        4) A fallback OCR method using pytesseract was attempted but accuracy was low due to:
               a)Thin table lines
               c)Inconsistent font rendering
               c)Multi-column layouts
 
   2.2 Text Chunking 
 
-      1) Manual text is split into Maximum ~200–250 words per chunk
+      1) Manual text is split into Maximum 250 words per chunk
 
       2) Table rows remain grouped where possible
 
-      3)This improves contextual retrieval during querying
+      3) This improves contextual retrieval during querying
 
-   2.3 Embeddings & Vector Store
+  2.3 Embeddings & Vector Store
 
     1) SentenceTransformer: all-MiniLM-L6-v2
 
     2) FAISS IndexFlatIP for similarity search
 
-Embeddings allow retrieval even when the query wording differs from the manual text. 
+ Embeddings allow retrieval even when the query wording differs from the manual text. 
 
-2.4 Retrieval-Augmented LLM Query
+ 2.4 Retrieval-Augmented LLM Query
 
-   The RAG query flow:
+  The RAG query flow:
 
    1) User → “Torque for brake caliper bolts”
 
@@ -91,7 +91,7 @@ Embeddings allow retrieval even when the query wording differs from the manual t
 
    4)LLM outputs structured JSON
 
-  Tools Used 
+
 | Purpose            Tool                   |
 | PDF Parsing     | PyMuPDF (fitz)          |
 | OCR (attempted) | pytesseract             |
@@ -102,27 +102,28 @@ Embeddings allow retrieval even when the query wording differs from the manual t
 
    
 ## **2) Future Improvements**
- 6.1 Integrate Gemini Vision (Important Upgrade) 
+ 
+6.1 Integrate Gemini Vision (Important Upgrade) 
 
     Many torque tables exist ONLY as images.
     Gemini Vision can:
 
-      1)Detect tables visually
+      1 )Detect tables visually
 
-      2)Extract rows and numerical columns
+      2) Extract rows and numerical columns
 
-      3)Preserve structure
+      3) Preserve structure
 
-      4)Improve accuracy over OCR
+      4) Improve accuracy over OCR
 
-      5)This would completely solve the problem of thin-line tables.
+      5) This would completely solve the problem of thin-line tables.
 
 
      6.2 Use Deep Table Extractors 
 
        Examples:
-        1)Google DocAI
-        2)LayoutLMv3
+        1) Google DocAI
+        2) LayoutLMv3
 
      6.3 Using Heirarchial Chunking on basis of section and their heading which appears on evry page and nearly 40-50 pages have same headings.
       
