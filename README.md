@@ -43,8 +43,9 @@ To solve this, a hybrid pipeline was implemented using:
   
 
 
-**OCR was attempted for image-only pages but did not fully succeed due to thin table lines, noisy backgrounds.I have implemented the OCR in the notebook.Needed a bit of croppng on the tables to identify lb-ft,Nm,lb-in.
-2)Torque tables inside images do not appear in extracted text, so an LLM cannot see them unless OCR or a Vision model is applied**
+**1) OCR was attempted for image-only pages but did not fully succeed due to thin table lines, noisy backgrounds.I have implemented the OCR in the notebook.Needed a bit of croppng on the tables to identify lb-ft,Nm,lb-in.
+  2)Torque tables inside images do not appear in extracted text, so an LLM cannot see them unless OCR or a Vision model is applied
+  3) Some of the part number and torque tables were in html document format which was difficult to extract**
 
 ## **2. System Architecture**
 
@@ -85,11 +86,11 @@ The RAG pipeline contains four main stages:
 
    1) User → “Torque for brake caliper bolts”
 
-   2)Embed query and retrieve top-k relevant chunks
+   2 )Embed query and retrieve top-k relevant chunks
 
-   3)Send retrieved chunks + system prompt to Gemini text model
+   3) Send retrieved chunks + system prompt to Gemini text model
 
-   4)LLM outputs structured JSON
+   4) LLM outputs structured JSON
 
 
 | Purpose            Tool                   |
@@ -99,6 +100,8 @@ The RAG pipeline contains four main stages:
 | Vector Search   | FAISS                   |
 | LLM             | Gemini 2.5 Flash (text) |
 | Environment     | Google Colab            |
+
+
 
    
 ## **2) Future Improvements**
