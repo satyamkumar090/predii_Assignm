@@ -24,7 +24,7 @@ Automotive service manuals contain:
 
    3) Part number lists
 
-I  4) Images with overlaid labels
+   4) Images with overlaid labels
 
    5) Some pages without selectable text
 
@@ -91,10 +91,8 @@ Embeddings allow retrieval even when the query wording differs from the manual t
 
    4)LLM outputs structured JSON
 
-  ** Tools Used **
-  
-   1)  Purpose          Tool                  
-| --------------- | ----------------------- |
+  Tools Used 
+| Purpose            Tool                   |
 | PDF Parsing     | PyMuPDF (fitz)          |
 | OCR (attempted) | pytesseract             |
 | Embeddings      | Sentence-Transformers   |
@@ -104,7 +102,7 @@ Embeddings allow retrieval even when the query wording differs from the manual t
 
    
 ## **2) Future Improvements**
-  6.1 Integrate Gemini Vision (Important Upgrade) 
+ 6.1 Integrate Gemini Vision (Important Upgrade) 
 
     Many torque tables exist ONLY as images.
     Gemini Vision can:
