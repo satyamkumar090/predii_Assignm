@@ -14,7 +14,7 @@ The goal was to build a text-based RAG pipeline capable of:
 
   6)This README explains the system design, tools used, and ideas for improvement.
 
-1. Project Overview
+## **Project Overview**
 
 Automotive service manuals contain:
 
